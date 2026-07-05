@@ -1973,6 +1973,17 @@
           "confidence": "probable",
           "sources": [
             "s_arbre_filae"
+          ],
+          "note": "Né avant avril 1665 à Harnes, fils de Hubert Leclercq (arbre Filae)."
+        },
+        {
+          "type": "marriage",
+          "date": "1687-11-11",
+          "place": "Harnes (Pas-de-Calais)",
+          "value": "Thérèse Delattre",
+          "confidence": "probable",
+          "sources": [
+            "s_arbre_filae"
           ]
         },
         {
@@ -2096,6 +2107,97 @@
         "role": "Frère de Hubert · laboureur censier à Harnes"
       },
       "notes": "Frère aîné de Hubert Leclercq (1696), l'ancêtre direct ; fils de Noël Félix Leclercq & Thérèse Delattre. Laboureur censier à Harnes. Marié à Marie Élisabeth Carpentier le 28 janvier 1717 (contrat le même jour), il en a sept enfants, tous baptisés à Harnes : Marie Rose (1717), Valentin (1719), Marie Alexandrine (1722), Louis Valentin (1726), Marie Élisabeth (1729), Marie Antoinette (1731) et Marie Thérèse (1736). Descendance non développée ici (branche collatérale)."
+    },
+    {
+      "id": "p_antoineignace_leclercq",
+      "names": { "given": "Antoine Ignace", "surname": "Leclercq", "variants": [] },
+      "sex": "M",
+      "living": false,
+      "relationToReference": "frère de l'octaïeul (Hubert 1696)",
+      "parents": { "unionId": "u_noel_therese", "confidence": "probable" },
+      "events": [
+        { "type": "birth", "date": "1688-09-02", "place": "Harnes (Pas-de-Calais)", "confidence": "probable", "sources": ["s_arbre_filae"] }
+      ],
+      "display": { "confidence": "probable", "role": "Frère aîné de Hubert (1696)" },
+      "notes": "Aîné des enfants de Noël Félix Leclercq & Thérèse Delattre, né à Harnes le 2 septembre 1688 (arbre Filae)."
+    },
+    {
+      "id": "p_marietherese1693_leclercq",
+      "names": { "given": "Marie Thérèse", "surname": "Leclercq", "variants": [] },
+      "sex": "F",
+      "living": false,
+      "relationToReference": "sœur de l'octaïeul (Hubert 1696)",
+      "parents": { "unionId": "u_noel_therese", "confidence": "probable" },
+      "events": [
+        { "type": "birth", "date": "1693-07-27", "place": "Harnes (Pas-de-Calais)", "confidence": "probable", "sources": ["s_arbre_filae"] }
+      ],
+      "display": { "confidence": "probable", "role": "Sœur de Hubert (1696)" },
+      "notes": "Fille de Noël Félix Leclercq & Thérèse Delattre, née à Harnes le 27 juillet 1693 (arbre Filae)."
+    },
+    {
+      "id": "p_francoislouis_leclercq",
+      "names": { "given": "François Louis", "surname": "Leclercq", "variants": [] },
+      "sex": "M",
+      "living": false,
+      "relationToReference": "frère de l'octaïeul (Hubert 1696)",
+      "parents": { "unionId": "u_noel_therese", "confidence": "probable" },
+      "events": [
+        { "type": "birth", "date": "1699-04-18", "place": "Harnes (Pas-de-Calais)", "confidence": "probable", "sources": ["s_arbre_filae"] }
+      ],
+      "display": { "confidence": "probable", "role": "Frère de Hubert (1696)" },
+      "notes": "Fils de Noël Félix Leclercq & Thérèse Delattre, né à Harnes le 18 avril 1699 (arbre Filae)."
+    },
+    {
+      "id": "p_valentin1701_leclercq",
+      "names": { "given": "Valentin", "surname": "Leclercq", "variants": [] },
+      "sex": "M",
+      "living": false,
+      "relationToReference": "frère de l'octaïeul (Hubert 1696)",
+      "parents": { "unionId": "u_noel_therese", "confidence": "probable" },
+      "events": [
+        { "type": "birth", "date": "1701-12-02", "place": "Harnes (Pas-de-Calais)", "confidence": "probable", "sources": ["s_arbre_filae"] }
+      ],
+      "display": { "confidence": "probable", "role": "Frère de Hubert (1696)" },
+      "notes": "Fils de Noël Félix Leclercq & Thérèse Delattre, né à Harnes le 2 décembre 1701 (arbre Filae)."
+    },
+    {
+      "id": "p_marie1704_leclercq",
+      "names": { "given": "Marie", "surname": "Leclercq", "variants": [] },
+      "sex": "F",
+      "living": false,
+      "relationToReference": "sœur de l'octaïeul (Hubert 1696)",
+      "parents": { "unionId": "u_noel_therese", "confidence": "probable" },
+      "events": [
+        { "type": "birth", "date": "1704-10-05", "place": "Harnes (Pas-de-Calais)", "confidence": "probable", "sources": ["s_arbre_filae"] }
+      ],
+      "display": { "confidence": "probable", "role": "Sœur de Hubert (1696)" },
+      "notes": "Fille de Noël Félix Leclercq & Thérèse Delattre, née à Harnes le 5 octobre 1704 (arbre Filae)."
+    },
+    {
+      "id": "p_antoinette1707_leclercq",
+      "names": { "given": "Antoinette", "surname": "Leclercq", "variants": [] },
+      "sex": "F",
+      "living": false,
+      "relationToReference": "sœur de l'octaïeul (Hubert 1696)",
+      "parents": { "unionId": "u_noel_therese", "confidence": "probable" },
+      "events": [
+        { "type": "birth", "date": "1707-02-27", "place": "Harnes (Pas-de-Calais)", "confidence": "probable", "sources": ["s_arbre_filae"] }
+      ],
+      "display": { "confidence": "probable", "role": "Sœur de Hubert (1696)" },
+      "notes": "Fille de Noël Félix Leclercq & Thérèse Delattre, née à Harnes le 27 février 1707 (arbre Filae)."
+    },
+    {
+      "id": "p_pierremartin1710_leclercq",
+      "names": { "given": "Pierre Martin", "surname": "Leclercq", "variants": [] },
+      "sex": "M",
+      "living": false,
+      "relationToReference": "frère de l'octaïeul (Hubert 1696)",
+      "parents": { "unionId": "u_noel_therese", "confidence": "probable" },
+      "events": [
+        { "type": "birth", "date": "1710-02-26", "place": "Harnes (Pas-de-Calais)", "confidence": "probable", "sources": ["s_arbre_filae"] }
+      ],
+      "display": { "confidence": "probable", "role": "Benjamin de Hubert (1696)" },
+      "notes": "Benjamin de Noël Félix Leclercq & Thérèse Delattre, né à Harnes le 26 février 1710, quelques mois avant le décès de son père (octobre 1710). Homonyme de l'ancêtre direct Pierre Martin Leclercq (1743-1816), qui est son petit-neveu."
     },
     {
       "id": "p_hubert1640_leclercq",
@@ -4902,11 +5004,18 @@
         }
       ],
       "children": [
+        "p_antoineignace_leclercq",
         "p_jeanphilippe_leclercq",
-        "p_hubert1696_leclercq"
+        "p_marietherese1693_leclercq",
+        "p_hubert1696_leclercq",
+        "p_francoislouis_leclercq",
+        "p_valentin1701_leclercq",
+        "p_marie1704_leclercq",
+        "p_antoinette1707_leclercq",
+        "p_pierremartin1710_leclercq"
       ],
       "childrenConfidence": "documented",
-      "notes": "Parents de Hubert (1696), nommés sur son baptême. Jean Philippe (1691), frère aîné de Hubert, marié à Marie Élisabeth Carpentier et père de sept enfants à Harnes."
+      "notes": "Mariés à Harnes le 11 novembre 1687. Au moins dix enfants baptisés à Harnes, dont l'ancêtre direct Hubert (1696) : Antoine Ignace (1688), Jean Philippe (1691), Marie Thérèse (1693), Hubert (1696), François Louis (1699), Valentin (1701), Marie (1704), Antoinette (1707) et Pierre Martin (1710). Le baptême de Hubert (1696) et la sépulture de Noël (1710) nomment le couple."
     },
     {
       "id": "u_hubert1640",
