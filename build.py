@@ -368,6 +368,11 @@ HEAD = r'''<!DOCTYPE html>
   .pd-n{display:block;color:var(--ink-soft);font-style:italic;font-size:13.5px;margin-top:2px;}
   .pcard-fam{font-size:15px;line-height:1.55;color:var(--ink);}
   .pcard-fam b{color:var(--gall);font-weight:600;} .pcard-fam .kids{color:var(--ink-soft);font-style:italic;}
+  .pd-desc-sp{font-size:15px;color:var(--ink);margin:0 0 8px;} .pd-desc-sp b{color:var(--gall);font-weight:600;}
+  .pd-desc-row{display:flex;justify-content:space-between;gap:14px;font-size:14.5px;line-height:1.5;padding:3px 0;border-bottom:1px dotted rgba(44,39,32,.13);}
+  .pd-desc-row:last-of-type{border-bottom:none;}
+  .pd-desc-d{flex:none;color:var(--gall);font-variant-numeric:tabular-nums;font-size:13px;}
+  .pd-desc-note{font-style:italic;color:var(--ink-soft);font-size:13px;margin:8px 0 0;}
   .pcard-notes{font-style:italic;color:var(--ink-soft);font-size:14.5px;line-height:1.55;}
   .pcard-src{display:flex;flex-wrap:wrap;gap:8px;}
   .pcard-src a{font-family:"Courier Prime",monospace;font-size:11px;letter-spacing:.02em;color:var(--ink-soft);text-decoration:none;border:1px solid var(--hair);border-radius:3px;padding:5px 10px;cursor:pointer;background:rgba(255,255,255,.25);}
@@ -1277,9 +1282,22 @@ class Tree:
             href = f if (f and f.startswith("http")) else (quote(f) if f else "")
             srcs.append({"label": esc(s.get("shortLabel") or s["title"]),
                          "href": href, "img": bool(f and self.is_image_file(f))})
+        # descendance d'un collatéral (branche non prolongée dans l'arbre ascendant)
+        desc = ""
+        dd = p.get("descendants")
+        if dd:
+            rows = []
+            for c in dd.get("children", []):
+                yr = fr_date(c["date"]) if c.get("date") else ""
+                rows.append('<div class="pd-desc-row"><span class="pd-desc-n">%s</span>'
+                            '<span class="pd-desc-d">%s</span></div>'
+                            % (esc(c["name"]), esc(yr)))
+            head = ('<p class="pd-desc-sp">× <b>%s</b></p>' % esc(dd["spouse"])) if dd.get("spouse") else ""
+            foot = ('<p class="pd-desc-note">%s</p>' % esc(dd["note"])) if dd.get("note") else ""
+            desc = head + "".join(rows) + foot
         port = p.get("portrait")
         return {
-            "name": esc(nm), "sub": sub,
+            "name": esc(nm), "sub": sub, "desc": desc,
             "conf": CONF_LABEL.get(disp.get("confidence") or "", ""),
             "cls": self.card_class(p),
             "role": disp.get("role", self.auto_role(p)) or "",
@@ -1319,7 +1337,7 @@ class Tree:
             '    (d.unions||[]).forEach(function(u){ fam+=\'<div class="pcard-fam" style="margin-top:7px;">\'+u+\'</div>\'; });\n'
             '    var src=(d.sources||[]).map(function(s){ var mk=s.img?\'⌕\':\'↗\';\n'
             '      return \'<a href="\'+s.href+\'" data-img="\'+(s.img?1:0)+\'">\'+s.label+\' <span class="mk">\'+mk+\'</span></a>\'; }).join("");\n'
-            '    body.innerHTML=sec("Photo de "+d.given,photo)+sec("Repères de vie",vie)+sec("Famille",fam)+sec("Notes",d.notes?\'<p class="pcard-notes">\'+d.notes+\'</p>\':"")+sec("Sources",src?\'<div class="pcard-src">\'+src+\'</div>\':"");\n'
+            '    body.innerHTML=sec("Photo de "+d.given,photo)+sec("Repères de vie",vie)+sec("Famille",fam)+sec("Descendance",d.desc)+sec("Notes",d.notes?\'<p class="pcard-notes">\'+d.notes+\'</p>\':"")+sec("Sources",src?\'<div class="pcard-src">\'+src+\'</div>\':"");\n'
             '    var ph=body.querySelector(".pcard-photo"); if(ph&&window.faShowImage){ ph.addEventListener("click",function(){ window.faShowImage(d.portrait, "Photo de "+d.given, d.photoAlt||("Photo de "+d.given)); }); }\n'
             '    body.querySelectorAll(".pcard-src a").forEach(function(a){ a.addEventListener("click",function(e){ e.preventDefault();\n'
             '      if(a.getAttribute("data-img")==="1" && window.faShowImage){ window.faShowImage(a.getAttribute("href"), a.textContent, a.textContent); }\n'

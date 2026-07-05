@@ -2106,7 +2106,20 @@
         "confidence": "probable",
         "role": "Frère de Hubert · laboureur censier à Harnes"
       },
-      "notes": "Frère aîné de Hubert Leclercq (1696), l'ancêtre direct ; fils de Noël Félix Leclercq & Thérèse Delattre. Laboureur censier à Harnes. Marié à Marie Élisabeth Carpentier le 28 janvier 1717 (contrat le même jour), il en a sept enfants, tous baptisés à Harnes : Marie Rose (1717), Valentin (1719), Marie Alexandrine (1722), Louis Valentin (1726), Marie Élisabeth (1729), Marie Antoinette (1731) et Marie Thérèse (1736). Descendance non développée ici (branche collatérale)."
+      "notes": "Frère aîné de Hubert Leclercq (1696), l'ancêtre direct ; fils de Noël Félix Leclercq & Thérèse Delattre. Laboureur censier à Harnes. Marié à Marie Élisabeth Carpentier le 28 janvier 1717 (contrat le même jour), il en a sept enfants tous baptisés à Harnes (détaillés ci-dessous). Branche collatérale : non prolongée dans l'arbre ascendant.",
+      "descendants": {
+        "spouse": "Marie Élisabeth Carpentier",
+        "note": "Sept enfants baptisés à Harnes",
+        "children": [
+          { "name": "Marie Rose", "date": "1717-11-12" },
+          { "name": "Valentin", "date": "1719-02-23" },
+          { "name": "Marie Alexandrine", "date": "1722-03-20" },
+          { "name": "Louis Valentin", "date": "1726-09-03" },
+          { "name": "Marie Élisabeth", "date": "1729-08-20" },
+          { "name": "Marie Antoinette", "date": "1731-09-26" },
+          { "name": "Marie Thérèse", "date": "1736-03-29" }
+        ]
+      }
     },
     {
       "id": "p_antoineignace_leclercq",
