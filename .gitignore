@@ -1,0 +1,9 @@
+# artefacts & env
+.DS_Store
+**/.DS_Store
+tools/venv/
+__pycache__/
+*.pyc
+render*.png
+# scans bruts non utilisés par le site (dont documents privés de personnes vivantes)
+# -> le dépôt ne versionne QUE les fichiers référencés (voir liste d'ajout)
