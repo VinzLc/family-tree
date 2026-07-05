@@ -2116,10 +2116,11 @@
       "relationToReference": "frère de l'octaïeul (Hubert 1696)",
       "parents": { "unionId": "u_noel_therese", "confidence": "probable" },
       "events": [
-        { "type": "birth", "date": "1688-09-02", "place": "Harnes (Pas-de-Calais)", "confidence": "probable", "sources": ["s_arbre_filae"] }
+        { "type": "birth", "date": "1688-09-02", "place": "Harnes (Pas-de-Calais)", "confidence": "probable", "sources": ["s_arbre_filae"] },
+        { "type": "death", "date": "1723-08-12", "confidence": "probable", "sources": ["s_arbre_filae"] }
       ],
       "display": { "confidence": "probable", "role": "Frère aîné de Hubert (1696)" },
-      "notes": "Aîné des enfants de Noël Félix Leclercq & Thérèse Delattre, né à Harnes le 2 septembre 1688 (arbre Filae)."
+      "notes": "Aîné des enfants de Noël Félix Leclercq & Thérèse Delattre, né à Harnes le 2 septembre 1688, mort le 12 août 1723 (arbre Filae)."
     },
     {
       "id": "p_marietherese1693_leclercq",
@@ -2142,10 +2143,11 @@
       "relationToReference": "frère de l'octaïeul (Hubert 1696)",
       "parents": { "unionId": "u_noel_therese", "confidence": "probable" },
       "events": [
-        { "type": "birth", "date": "1699-04-18", "place": "Harnes (Pas-de-Calais)", "confidence": "probable", "sources": ["s_arbre_filae"] }
+        { "type": "birth", "date": "1699-04-18", "place": "Harnes (Pas-de-Calais)", "confidence": "probable", "sources": ["s_arbre_filae"] },
+        { "type": "death", "date": "1770-08-22", "confidence": "probable", "sources": ["s_arbre_filae"] }
       ],
       "display": { "confidence": "probable", "role": "Frère de Hubert (1696)" },
-      "notes": "Fils de Noël Félix Leclercq & Thérèse Delattre, né à Harnes le 18 avril 1699 (arbre Filae)."
+      "notes": "Fils de Noël Félix Leclercq & Thérèse Delattre, né à Harnes le 18 avril 1699, mort le 22 août 1770 (arbre Filae)."
     },
     {
       "id": "p_valentin1701_leclercq",
@@ -2155,10 +2157,11 @@
       "relationToReference": "frère de l'octaïeul (Hubert 1696)",
       "parents": { "unionId": "u_noel_therese", "confidence": "probable" },
       "events": [
-        { "type": "birth", "date": "1701-12-02", "place": "Harnes (Pas-de-Calais)", "confidence": "probable", "sources": ["s_arbre_filae"] }
+        { "type": "birth", "date": "1701-12-02", "place": "Harnes (Pas-de-Calais)", "confidence": "probable", "sources": ["s_arbre_filae"] },
+        { "type": "death", "date": "1768-01-05", "place": "Harnes (Pas-de-Calais)", "confidence": "probable", "sources": ["s_arbre_filae"] }
       ],
       "display": { "confidence": "probable", "role": "Frère de Hubert (1696)" },
-      "notes": "Fils de Noël Félix Leclercq & Thérèse Delattre, né à Harnes le 2 décembre 1701 (arbre Filae)."
+      "notes": "Fils de Noël Félix Leclercq & Thérèse Delattre, né à Harnes le 2 décembre 1701, mort à Harnes le 5 janvier 1768 (arbre Filae)."
     },
     {
       "id": "p_marie1704_leclercq",
@@ -2181,10 +2184,11 @@
       "relationToReference": "sœur de l'octaïeul (Hubert 1696)",
       "parents": { "unionId": "u_noel_therese", "confidence": "probable" },
       "events": [
-        { "type": "birth", "date": "1707-02-27", "place": "Harnes (Pas-de-Calais)", "confidence": "probable", "sources": ["s_arbre_filae"] }
+        { "type": "birth", "date": "1707-02-27", "place": "Harnes (Pas-de-Calais)", "confidence": "probable", "sources": ["s_arbre_filae"] },
+        { "type": "death", "date": "1709-01-24", "confidence": "probable", "sources": ["s_arbre_filae"], "note": "Morte en bas âge, à moins de deux ans." }
       ],
-      "display": { "confidence": "probable", "role": "Sœur de Hubert (1696)" },
-      "notes": "Fille de Noël Félix Leclercq & Thérèse Delattre, née à Harnes le 27 février 1707 (arbre Filae)."
+      "display": { "confidence": "probable", "role": "Sœur de Hubert (1696) · † en bas âge" },
+      "notes": "Fille de Noël Félix Leclercq & Thérèse Delattre, née à Harnes le 27 février 1707 et morte le 24 janvier 1709, avant ses deux ans (arbre Filae)."
     },
     {
       "id": "p_pierremartin1710_leclercq",
@@ -2488,7 +2492,7 @@
         { "type": "birth", "date": "1906", "place": "Noyelles-sous-Lens (Pas-de-Calais)", "confidence": "probable", "sources": ["s_arbre_filae"] }
       ],
       "display": { "confidence": "probable", "role": "Frère d'Eugénie" },
-      "notes": "Fils de Jules Lesire & Clémence Rainguez, frère cadet d'Eugénie, né en 1906 à Noyelles-sous-Lens d'après l'arbre Filae. N'apparaît pas au recensement de 1921 (il aurait eu 15 ans) : peut-être décédé avant, ou domicilié ailleurs — à confirmer par les actes."
+      "notes": "Fils de Jules Lesire & Clémence Rainguez, frère cadet d'Eugénie, né en 1906 à Noyelles-sous-Lens d'après l'arbre Filae (qui ne donne pas sa date de décès). Comme sa sœur Andrée (1913-1979), il ne figure pas sur le relevé du recensement de 1921 : lecture incomplète du ménage plutôt qu'absence réelle."
     },
     {
       "id": "p_andree_lesire",
@@ -2498,10 +2502,11 @@
       "relationToReference": "sœur de l'arrière-grand-mère",
       "parents": { "unionId": "u_juleslesire_clemence", "confidence": "probable" },
       "events": [
-        { "type": "birth", "date": "1913-06-18", "place": "Noyelles-sous-Lens (Pas-de-Calais)", "confidence": "probable", "sources": ["s_arbre_filae"] }
+        { "type": "birth", "date": "1913-06-18", "place": "Noyelles-sous-Lens (Pas-de-Calais)", "confidence": "probable", "sources": ["s_arbre_filae"] },
+        { "type": "death", "date": "1979-02-09", "place": "Lille (Nord), France", "confidence": "probable", "sources": ["s_arbre_filae"] }
       ],
       "display": { "confidence": "probable", "role": "Sœur cadette d'Eugénie" },
-      "notes": "Fille de Jules Lesire & Clémence Rainguez, benjamine connue de la fratrie, née le 18 juin 1913 à Noyelles-sous-Lens d'après l'arbre Filae. N'apparaît pas au recensement de 1921 (elle aurait eu 8 ans) : possiblement décédée en bas âge — à confirmer par les actes."
+      "notes": "Fille de Jules Lesire & Clémence Rainguez, benjamine connue de la fratrie, née le 18 juin 1913 à Noyelles-sous-Lens et morte le 9 février 1979 à Lille (arbre Filae). Elle ne figure pas sur le relevé du recensement de 1921 — lecture incomplète du ménage plutôt qu'absence, puisqu'elle a vécu jusqu'en 1979."
     },
     {
       "id": "p_jules_leonard",
@@ -5015,7 +5020,7 @@
         "p_pierremartin1710_leclercq"
       ],
       "childrenConfidence": "documented",
-      "notes": "Mariés à Harnes le 11 novembre 1687. Au moins dix enfants baptisés à Harnes, dont l'ancêtre direct Hubert (1696) : Antoine Ignace (1688), Jean Philippe (1691), Marie Thérèse (1693), Hubert (1696), François Louis (1699), Valentin (1701), Marie (1704), Antoinette (1707) et Pierre Martin (1710). Le baptême de Hubert (1696) et la sépulture de Noël (1710) nomment le couple."
+      "notes": "Mariés à Harnes le 11 novembre 1687. Neuf enfants baptisés à Harnes, dont l'ancêtre direct Hubert (1696) : Antoine Ignace (1688-1723), Jean Philippe (1691-1759), Marie Thérèse (1693), Hubert (1696-1751), François Louis (1699-1770), Valentin (1701-1768), Marie (1704), Antoinette (1707-1709, morte en bas âge) et Pierre Martin (1710). Le baptême de Hubert (1696) et la sépulture de Noël (1710) nomment le couple."
     },
     {
       "id": "u_hubert1640",
