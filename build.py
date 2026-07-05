@@ -354,8 +354,8 @@ HEAD = r'''<!DOCTYPE html>
   .pcard-close{position:absolute;top:9px;right:15px;background:none;border:none;font-family:"Courier Prime",monospace;font-size:27px;color:var(--ink-soft);cursor:pointer;line-height:1;}
   .pcard-close:hover{color:var(--oxblood);}
   .pcard-head{display:flex;gap:18px;align-items:flex-start;border-bottom:1px solid var(--hair);padding-bottom:17px;margin-bottom:17px;}
-  .pcard-portrait{width:86px;height:106px;object-fit:cover;border:1px solid #d6c6a2;border-radius:2px;filter:sepia(.3) contrast(1.03);box-shadow:1px 1px 0 rgba(44,39,32,.18);flex:none;}
-  .pcard-portrait:not([src]),.pcard-portrait[src=""]{display:none;}
+  .pcard-photo{display:block;max-width:190px;width:58%;height:auto;border:1px solid #d6c6a2;border-radius:2px;filter:sepia(.3) contrast(1.03);box-shadow:1px 1px 0 rgba(44,39,32,.18);cursor:zoom-in;}
+  .pcard-photo-cap{display:block;font-style:italic;font-size:13px;line-height:1.4;color:var(--ink-soft);margin-top:7px;max-width:280px;}
   .pcard-conf{font-family:"Courier Prime",monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--oxblood);}
   .pcard-name{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:29px;line-height:1.04;margin:3px 0 5px;color:var(--ink);}
   .pcard-name small{display:block;font-size:15px;font-style:italic;font-weight:400;color:var(--ink-soft);}
@@ -1282,8 +1282,10 @@ class Tree:
             "name": esc(nm), "sub": sub,
             "conf": CONF_LABEL.get(disp.get("confidence") or "", ""),
             "cls": self.card_class(p),
-            "role": esc(disp.get("role", self.auto_role(p)) or ""),
+            "role": disp.get("role", self.auto_role(p)) or "",
             "portrait": (quote(port["file"]) if port else ""),
+            "given": esc(p["names"].get("given") or p["names"].get("surname") or ""),
+            "photoAlt": esc((port or {}).get("alt", "")),
             "events": evs, "parents": parents, "unions": fam,
             "notes": esc(p.get("notes", "")), "sources": srcs,
         }
@@ -1294,7 +1296,7 @@ class Tree:
             '<div class="pcard-backdrop" id="pcard" aria-hidden="true">\n'
             '<div class="pcard" id="pcardBox" role="dialog" aria-modal="true">\n'
             '<button class="pcard-close" id="pcardClose" aria-label="Fermer">×</button>\n'
-            '<div class="pcard-head"><img class="pcard-portrait" id="pcPortrait" alt="">'
+            '<div class="pcard-head">'
             '<div><span class="pcard-conf" id="pcConf"></span>'
             '<h3 class="pcard-name" id="pcName"></h3>'
             '<p class="pcard-role" id="pcRole"></p></div></div>\n'
@@ -1305,20 +1307,20 @@ class Tree:
             '(function(){\n'
             '  var bk=document.getElementById("pcard"),box=document.getElementById("pcardBox"),\n'
             '      body=document.getElementById("pcBody"),nameEl=document.getElementById("pcName"),\n'
-            '      roleEl=document.getElementById("pcRole"),confEl=document.getElementById("pcConf"),\n'
-            '      port=document.getElementById("pcPortrait");\n'
+            '      roleEl=document.getElementById("pcRole"),confEl=document.getElementById("pcConf");\n'
             '  function sec(title,inner){ return inner ? \'<div class="pcard-sec"><h4>\'+title+\'</h4>\'+inner+\'</div>\' : ""; }\n'
             '  function open(pid){ var d=FAPEOPLE[pid]; if(!d) return;\n'
             '    box.className="pcard "+(d.cls||"");\n'
             '    nameEl.innerHTML=d.name+(d.sub?\'<small>\'+d.sub+\'</small>\':"");\n'
-            '    roleEl.textContent=d.role||""; confEl.textContent=d.conf||"";\n'
-            '    if(d.portrait){ port.src=d.portrait; port.style.display=""; } else { port.removeAttribute("src"); port.style.display="none"; }\n'
+            '    roleEl.innerHTML=d.role||""; confEl.textContent=d.conf||"";\n'
+            '    var photo=d.portrait ? \'<img class="pcard-photo" src="\'+d.portrait+\'" alt="\'+(d.photoAlt||("Photo de "+d.given))+\'">\'+(d.photoAlt?\'<span class="pcard-photo-cap">\'+d.photoAlt+\'</span>\':"") : "";\n'
             '    var vie=(d.events||[]).map(function(e){ return \'<div class="pd-ev"><span class="pd-l">\'+e.l+\'</span><span class="pd-v">\'+e.v+(e.n?\'<span class="pd-n">\'+e.n+\'</span>\':"")+\'</span></div>\'; }).join("");\n'
             '    var fam=""; if(d.parents) fam+=\'<div class="pcard-fam">Enfant de <b>\'+d.parents+\'</b></div>\';\n'
             '    (d.unions||[]).forEach(function(u){ fam+=\'<div class="pcard-fam" style="margin-top:7px;">\'+u+\'</div>\'; });\n'
             '    var src=(d.sources||[]).map(function(s){ var mk=s.img?\'⌕\':\'↗\';\n'
             '      return \'<a href="\'+s.href+\'" data-img="\'+(s.img?1:0)+\'">\'+s.label+\' <span class="mk">\'+mk+\'</span></a>\'; }).join("");\n'
-            '    body.innerHTML=sec("Repères de vie",vie)+sec("Famille",fam)+sec("Notes",d.notes?\'<p class="pcard-notes">\'+d.notes+\'</p>\':"")+sec("Sources",src?\'<div class="pcard-src">\'+src+\'</div>\':"");\n'
+            '    body.innerHTML=sec("Photo de "+d.given,photo)+sec("Repères de vie",vie)+sec("Famille",fam)+sec("Notes",d.notes?\'<p class="pcard-notes">\'+d.notes+\'</p>\':"")+sec("Sources",src?\'<div class="pcard-src">\'+src+\'</div>\':"");\n'
+            '    var ph=body.querySelector(".pcard-photo"); if(ph&&window.faShowImage){ ph.addEventListener("click",function(){ window.faShowImage(d.portrait, "Photo de "+d.given, d.photoAlt||("Photo de "+d.given)); }); }\n'
             '    body.querySelectorAll(".pcard-src a").forEach(function(a){ a.addEventListener("click",function(e){ e.preventDefault();\n'
             '      if(a.getAttribute("data-img")==="1" && window.faShowImage){ window.faShowImage(a.getAttribute("href"), a.textContent, a.textContent); }\n'
             '      else { window.open(a.getAttribute("href"),"_blank","noopener"); } }); });\n'
