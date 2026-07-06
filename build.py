@@ -214,6 +214,24 @@ HEAD = r'''<!DOCTYPE html>
   .panel li::before{content:"";position:absolute;left:2px;top:8px;width:7px;height:7px;background:var(--ochre);border-radius:50%;}
   .panel.q li::before{background:var(--oxblood);border-radius:1px;transform:rotate(45deg);}
   .panel li b{color:var(--gall);font-weight:600;}
+  /* Panneau « histoire d'une graphie » (le Clercq -> Leclercq) */
+  .nh-intro,.nh-p{font-size:15.5px;line-height:1.56;color:var(--ink);margin:0 0 12px;}
+  .nh-p:last-child{margin-bottom:0;}
+  .nh-flex{display:flex;gap:30px;align-items:flex-start;flex-wrap:wrap;margin:4px 0 16px;}
+  .nh-table{border-collapse:collapse;flex:1 1 360px;min-width:300px;}
+  .nh-table td{padding:7px 12px 7px 0;border-bottom:1px dotted var(--hair);vertical-align:baseline;}
+  .nh-table tr:last-child td{border-bottom:none;}
+  .nh-yr{font-family:"Courier Prime",monospace;font-size:12px;color:var(--ochre);white-space:nowrap;width:1%;}
+  .nh-form{font-family:"Cormorant Garamond",serif;font-size:18px;font-style:italic;font-weight:600;}
+  .nh-form.sep{color:var(--gall);}
+  .nh-form.joined{color:var(--oxblood);}
+  .nh-tag{font-family:"Courier Prime",monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;border:1px solid currentColor;border-radius:9px;padding:1px 7px;margin-left:9px;white-space:nowrap;vertical-align:2px;}
+  .nh-tag.sep{color:var(--gall);}
+  .nh-tag.joined{color:var(--oxblood);}
+  .nh-doc{font-size:13px;color:var(--ink-soft);}
+  .nh-sig{flex:1 1 300px;min-width:260px;margin:6px 0 0;text-align:center;}
+  .nh-sig img{max-width:100%;border:1px solid var(--hair);border-radius:2px;box-shadow:2px 3px 9px rgba(44,39,32,.2);cursor:zoom-in;}
+  .nh-sig figcaption{font-size:12.5px;font-style:italic;color:var(--ink-soft);margin-top:8px;line-height:1.45;}
   .panel li .doc-name{font-style:italic;color:var(--ink-soft);}
   .panel li a.doc-name{text-decoration:none;cursor:pointer;}
   .panel li a.doc-name:hover{color:var(--oxblood);text-decoration:underline;}
@@ -1113,6 +1131,40 @@ class Tree:
                 'cliquez une catégorie pour la déployer.</p>\n%s\n</div>'
                 % (total, "\n".join(blocks)))
 
+    def surname_panel(self):
+        """Panneau « histoire d'une graphie » : frise des attestations du nom
+        (le Clercq → Leclercq) + signature autographe de 1789 en illustration."""
+        sh = self.data.get("surnameHistory")
+        if not sh:
+            return ""
+        rows = []
+        for a in sh.get("attestations", []):
+            cls = "joined" if a.get("joined") else "sep"
+            tag = "soudé" if a.get("joined") else "2 mots"
+            rows.append(
+                '<tr><td class="nh-yr">%s</td>'
+                '<td><span class="nh-form %s">« %s »</span>'
+                '<span class="nh-tag %s">%s</span><br>'
+                '<span class="nh-doc">%s</span></td></tr>'
+                % (esc(a["year"]), cls, esc(a["form"]), cls, tag, esc(a["doc"])))
+        sig = sh.get("signature")
+        fig = ""
+        if sig:
+            full = sig.get("full", sig["file"])
+            href = quote(full) if not full.startswith("http") else full
+            fig = ('<figure class="nh-sig">'
+                   '<a class="doc-img" href="%s" data-cap="%s">'
+                   '<img src="%s" alt="%s"></a>'
+                   '<figcaption>%s</figcaption></figure>'
+                   % (esc(href), esc(sig.get("caption", "")), esc(quote(sig["file"])),
+                      esc(sig.get("alt", "")), esc(sig.get("caption", ""))))
+        paras = "\n".join('<p class="nh-p">%s</p>' % p for p in sh.get("paragraphs", []))
+        return ('<div class="panel name-hist">\n<h2>%s</h2>\n'
+                '<p class="nh-intro">%s</p>\n'
+                '<div class="nh-flex">\n<table class="nh-table">%s</table>\n%s\n</div>\n'
+                '%s\n</div>'
+                % (esc(sh["title"]), esc(sh.get("intro", "")), "".join(rows), fig, paras))
+
     def research_panel(self):
         qs = sorted(self.data.get("researchQuestions", []),
                     key=lambda q: PRIORITY.get(q.get("priority"), 9))
@@ -1544,6 +1596,9 @@ class Tree:
         body.append(TREE_JS)
         body.append(self.gallery_html())
         body.append(self.map_html())
+        sp = self.surname_panel()
+        if sp:
+            body.append('<div style="margin-top:52px;">%s</div>' % sp)
         body.append('<div style="margin-top:52px;">%s</div>' % self.sources_panel())
         body.append("""
   <footer>

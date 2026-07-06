@@ -6157,6 +6157,65 @@
       "file": "sources/Arbre.pdf"
     }
   ],
+  "surnameHistory": {
+    "title": "Le nom « Leclercq » — histoire d'une graphie",
+    "intro": "Le nom vient du surnom médiéval « le clerc » — l'homme lettré, celui qui sait lire et écrire — avec ce -cq final propre aux graphies picardes et artésiennes : c'est pourquoi le Nord écrit « Leclercq » quand la Normandie écrit « Leclerc ». Avant le XIXᵉ siècle, un nom n'a pas d'orthographe : il a un son, et l'écrire est l'affaire de celui qui tient la plume. Les actes de la famille, tous passés à Harnes, montrent la soudure se faire sous nos yeux :",
+    "attestations": [
+      {
+        "year": "1696",
+        "form": "Noël le Clercq",
+        "joined": false,
+        "doc": "baptême de Hubert — le curé d'Harnes"
+      },
+      {
+        "year": "1710",
+        "form": "noel le clercq",
+        "joined": false,
+        "doc": "sépulture de Noël Félix — le curé d'Harnes"
+      },
+      {
+        "year": "1768",
+        "form": "pierre martin Leclercq",
+        "joined": true,
+        "doc": "ban de mariage — le curé Bracquart"
+      },
+      {
+        "year": "1789",
+        "form": "leclercq",
+        "joined": true,
+        "doc": "procès-verbal des États généraux — le greffier"
+      },
+      {
+        "year": "1789",
+        "form": "noel valletin le clercq",
+        "joined": false,
+        "doc": "cahier de doléances — signature autographe de Noël Vallentin"
+      },
+      {
+        "year": "1816",
+        "form": "pierre martin Leclercq",
+        "joined": true,
+        "doc": "acte de décès — l'état civil d'Harnes"
+      },
+      {
+        "year": "XIXᵉ",
+        "form": "Leclercq",
+        "joined": true,
+        "doc": "actes 1835-1891, fiches matricules — graphie définitive"
+      }
+    ],
+    "paragraphs": [
+      "Ce ne sont pas les ancêtres qui « écrivaient » leur nom : Pierre Martin et Pierre Ignace ne savaient pas signer. La graphie a toujours été l'affaire des lettrés qui tenaient la plume — curés, greffiers, puis officiers d'état civil. Dans les registres d'Harnes, la soudure s'opère vers 1760-1770 : deux mots en 1696 et 1710, un seul dès le ban de 1768 — un glissement d'usage des scribes, pas une décision de la famille.",
+      "Le document le plus parlant est celui de 1789 : dans la même pièce, le greffier inscrit « leclercq » en un mot dans la liste des comparants… et Noël Vallentin signe « le clercq » en deux mots, comme on le lui avait appris des décennies plus tôt. Sa main conserve l'usage de sa jeunesse au moment exact où l'administration bascule — et, ironie, le seul de la famille qui savait écrire portait littéralement le nom de « celui qui sait écrire ».",
+      "La forme « Leclercq » se fige avec l'état civil : à partir de 1792, la graphie de l'acte de naissance fait foi, chaque acte se copie sur le précédent, et l'on ne change plus un nom que par rectification judiciaire. Pour la lignée, elle est verrouillée au plus tard en 1816 — et tout le XIXᵉ siècle la reproduit sans varier."
+    ],
+    "signature": {
+      "file": "img/signature-leclercq-1789.jpg",
+      "alt": "Signature autographe « noel valletin le clercq » au bas du cahier de doléances d'Harnes, 1789",
+      "caption": "« noel valletin le clercq » — signature autographe au bas du cahier de doléances d'Harnes, 29 mars 1789. Un fossile d'écriture ancienne, saisi au moment où l'usage basculait.",
+      "full": "sources/cahier-harnes-1789-vue4.jpg"
+    }
+  },
   "researchQuestions": [
     {
       "id": "q_noel_vallentin_leclercq_1789",
