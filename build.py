@@ -357,6 +357,7 @@ HEAD = r'''<!DOCTYPE html>
   .lb-trans-body{white-space:pre-wrap;font-family:"EB Garamond",Georgia,serif;font-size:14px;line-height:1.62;color:var(--ink);}
   .lb-trans-note{margin:13px 0 0;padding-top:10px;border-top:1px dotted var(--hair);font-size:11px;font-style:italic;line-height:1.5;color:var(--ochre);}
   .doc-transflag{margin-left:7px;font-family:"Courier Prime",monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--gall);white-space:nowrap;}
+  .doc-concerns{display:block;font-size:12.5px;font-style:italic;color:var(--ink-soft);margin-top:3px;line-height:1.45;}
   @media(max-width:860px){
     .lb-stage{flex-direction:column;max-height:90vh;overflow:auto;}
     .lb-stage.has-trans .lb-figure img,.lb-figure img{max-width:88vw;max-height:56vh;}
@@ -1049,6 +1050,7 @@ class Tree:
         ("military-record", "Registres militaires"),
         ("migration", "Émigration & identité"),
         ("land-record", "Cadastre & biens"),
+        ("doleances", "Cahiers de doléances — 1789"),
         ("press-index", "Presse & bases en ligne"),
         ("compiled", "Arbres & compilations"),
         ("other", "Autres documents"),
@@ -1060,6 +1062,7 @@ class Tree:
         "military-record": "military-record",
         "passport": "migration", "identity-document": "migration",
         "land-record": "land-record",
+        "assembly-record": "doleances",
         "press": "press-index", "index-database": "press-index",
         "family-tree": "compiled", "compiled-tree": "compiled",
         "compiled-document": "compiled",
@@ -1084,6 +1087,53 @@ class Tree:
             return (0, "%s-00-00" % mm.group(1))
         return (1, "9999-99-99")
 
+    def source_concerns_index(self):
+        """Index inversé : id de source -> « qui est concerné et pourquoi »,
+        déduit des événements (personnes et unions) qui citent la source.
+        Un champ manuel `concerns` sur la source prend le pas sur l'auto."""
+        if getattr(self, "_concerns_idx", None) is not None:
+            return self._concerns_idx
+        idx = {}
+
+        def add(sid, name, what):
+            idx.setdefault(sid, {}).setdefault(name, [])
+            if what and what not in idx[sid][name]:
+                idx[sid][name].append(what)
+
+        for p in self.data["people"]:
+            nm = ((p["names"].get("given") or "") + " " + p["names"]["surname"]).strip()
+            for e in p.get("events", []):
+                lab = EVENT_LABELS.get(e.get("type"), e.get("type") or "").lower()
+                for sid in e.get("sources", []):
+                    add(sid, nm, lab)
+        for u in self.data["unions"]:
+            if not u["partners"]:
+                continue
+            names = " × ".join(self.full_name(x) for x in u["partners"])
+            for e in u.get("events", []):
+                if e.get("type") == "marriage":
+                    for sid in e.get("sources", []):
+                        add(sid, names, "mariage")
+        self._concerns_idx = {
+            sid: [(nm, whats) for nm, whats in people.items()]
+            for sid, people in idx.items()
+        }
+        return self._concerns_idx
+
+    def source_concerns_text(self, s):
+        manual = s.get("concerns")
+        if manual:
+            return manual
+        parts = self.source_concerns_index().get(s["id"])
+        if not parts:
+            return ""
+        MAXP = 4
+        chunks = ["%s (%s)" % (nm, ", ".join(whats)) for nm, whats in parts[:MAXP]]
+        more = len(parts) - MAXP
+        if more > 0:
+            chunks.append("et %d autre%s" % (more, "s" if more > 1 else ""))
+        return "Concerne %s." % " · ".join(chunks)
+
     def source_li(self, s):
         detail = "; ".join(x for x in (s.get("repository"), s.get("citation"),
                                        s.get("coverage")) if x)
@@ -1104,7 +1154,9 @@ class Tree:
         nviews = 1 + len([a for a in (s.get("annexes") or [])
                           if self.is_image_file(a.get("file"))]) if f and self.is_image_file(f) else 0
         views = ('<span class="doc-transflag">🖽 %d vues</span>' % nviews) if nviews > 1 else ""
-        return '<li>%s%s%s — %s.</li>' % (name, flag, views, esc(detail))
+        who = self.source_concerns_text(s)
+        who_html = ('<span class="doc-concerns">%s</span>' % esc(who)) if who else ""
+        return '<li>%s%s%s — %s.%s</li>' % (name, flag, views, esc(detail), who_html)
 
     def sources_panel(self):
         groups = {}
