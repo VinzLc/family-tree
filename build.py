@@ -411,7 +411,8 @@ AIEUL_TERMS = {4: "Trisaïeuls", 5: "Quadrisaïeuls", 6: "Quintaïeuls", 7: "Sex
                12: "Undécaïeuls", 13: "Duodécaïeuls"}
 EVENT_LABELS = {"birth": "Naissance", "baptism": "Baptême", "death": "Décès",
                 "occupation": "Profession", "military": "Service militaire",
-                "residence": "Résidence", "marriage": "Mariage", "religion": "Religion"}
+                "residence": "Résidence", "marriage": "Mariage", "religion": "Religion",
+                "civic": "Vie communale"}
 CONF_LABEL = {"documented": "Documenté · acte", "probable": "Probable · index/arbre",
               "inferred": "Déduit", "family": "Mémoire familiale", "unknown": "À retrouver"}
 

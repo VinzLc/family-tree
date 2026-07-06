@@ -1802,6 +1802,17 @@
           ]
         },
         {
+          "type": "civic",
+          "date": "1789-03-29",
+          "place": "Harnes (Pas-de-Calais)",
+          "value": "Comparant à l'assemblée du 29 mars 1789 pour les États généraux (cahier de doléances d'Harnes)",
+          "confidence": "probable",
+          "sources": [
+            "s_pv_harnes_1789"
+          ],
+          "note": "Un « Pierre Martin Leclercq » figure parmi les 132 comparants (n° 126) de l'assemblée qui rédige le cahier de doléances d'Harnes et élit ses quatre députés. À 46 ans, marchand de lin établi à Harnes jusqu'à sa mort, l'ancêtre direct est le candidat le plus vraisemblable — homonymie possible (patronyme répandu), d'où la prudence."
+        },
+        {
           "type": "death",
           "date": "1816-04-22",
           "place": "Harnes (Pas-de-Calais)",
@@ -1818,7 +1829,39 @@
         "meta": "né v. <span class=\"yr\">1743</span><br>Harnes<br><em>marchand de lin</em><br>† <span class=\"yr\">22 avril 1816</span>",
         "src": "Bans 1768 · décès 1816 · baptême PJ 1770"
       },
-      "notes": "Fils de Hubert Leclercq (1696) & Marie Catherine Bauduin, confirmé par le ban de mariage de 1768 et l'acte de décès de 1816. Marchand de lin à Harnes (acte de 1770). Marié à Angélique Victoire Devillers en avril 1768 ; père de Pierre Joseph (1770). Un frère, Pierre Ignace Leclercq, est témoin de son mariage. Il figure parmi les portionnaires du partage des terres communales de Harnes (« Tableau des portions ménagères »), aux côtés d'autres Leclercq (Amand ; Élisabeth veuve Cape) — parenté à établir. Décédé veuf en 1816."
+      "notes": "Fils de Hubert Leclercq (1696) & Marie Catherine Bauduin, confirmé par le ban de mariage de 1768 et l'acte de décès de 1816. Marchand de lin à Harnes (acte de 1770). Marié à Angélique Victoire Devillers en avril 1768 ; père de Pierre Joseph (1770). Un frère, Pierre Ignace Leclercq, est témoin de son mariage. Il figure parmi les portionnaires du partage des terres communales de Harnes (« Tableau des portions ménagères »), aux côtés d'autres Leclercq (Amand ; Élisabeth veuve Cape) — parenté à établir. Le 29 mars 1789, il comparaît très probablement (n° 126) à l'assemblée qui rédige le cahier de doléances d'Harnes pour les États généraux, aux côtés de son frère Pierre Ignace (n° 31) et d'un Noël Vallentin Leclercq resté à rattacher. Décédé veuf en 1816."
+    },
+    {
+      "id": "p_pierreignace_leclercq",
+      "names": {
+        "given": "Pierre Ignace",
+        "surname": "Leclercq",
+        "variants": []
+      },
+      "sex": "M",
+      "living": false,
+      "relationToReference": "collatéral Leclercq",
+      "parents": {
+        "unionId": "u_hubert1696_bauduin",
+        "confidence": "documented"
+      },
+      "events": [
+        {
+          "type": "civic",
+          "date": "1789-03-29",
+          "place": "Harnes (Pas-de-Calais)",
+          "value": "Comparant à l'assemblée du 29 mars 1789 pour les États généraux (cahier de doléances d'Harnes)",
+          "confidence": "probable",
+          "sources": [
+            "s_pv_harnes_1789"
+          ],
+          "note": "Un « Pierre Ignace Leclercq » ouvre la liste des Leclercq comparants (n° 31) — très probablement lui, aux côtés de son frère Pierre Martin (n° 126). Lecture du patronyme probable (finale « -cq » cohérente avec les deux autres mentions)."
+        }
+      ],
+      "notes": "Frère de l'ancêtre direct Pierre Martin (1743) : témoin à son mariage d'avril 1768, où le ban le nomme comme frère — c'est ce qui documente sa filiation. Dates de naissance et de décès non retrouvées (BMS d'Harnes à dépouiller). Le 29 mars 1789, un Pierre Ignace Leclercq comparaît (n° 31) à l'assemblée qui rédige le cahier de doléances d'Harnes pour les États généraux.",
+      "display": {
+        "confidence": "documented"
+      }
     },
     {
       "id": "p_angelique_devillers",
@@ -4999,10 +5042,11 @@
         }
       ],
       "children": [
-        "p_pm1743_leclercq"
+        "p_pm1743_leclercq",
+        "p_pierreignace_leclercq"
       ],
       "childrenConfidence": "documented",
-      "notes": "Mariage à Harnes le 30 juillet 1731. Parents de Pierre Martin (1743), confirmés par son ban de mariage (1768) et son acte de décès (1816) ; un autre fils, Pierre Ignace Leclercq, est témoin en 1768."
+      "notes": "Mariage à Harnes le 30 juillet 1731. Parents de Pierre Martin (1743), confirmés par son ban de mariage (1768) et son acte de décès (1816) ; un autre fils, Pierre Ignace Leclercq, est témoin en 1768 et comparaît très probablement, comme son frère, à l'assemblée du cahier de doléances d'Harnes en 1789."
     },
     {
       "id": "u_noel_therese",
@@ -6030,6 +6074,38 @@
       ]
     },
     {
+      "id": "s_pv_harnes_1789",
+      "type": "assembly-record",
+      "title": "Procès-verbal de l'assemblée des habitants de Harnes pour les États généraux — 29 mars 1789",
+      "repository": "Archives départementales du Pas-de-Calais",
+      "citation": "Procès-verbal d'assemblée de la communauté d'Harnes, 29 mars 1789, cote 2 B 883/6 (5 vues)",
+      "eventDate": "1789-03-29",
+      "language": "français",
+      "note": "Assemblée préliminaire de la communauté d'Harnes (« quatre cent feux »), convoquée « au son de tambour, faute de cloche », pour la convocation des États généraux de 1789 : liste nominative de 132 comparants, rédaction du cahier de doléances, élection de quatre députés (Jean Baptiste Rohart, Denis Joseph Laurent, Guillaume Cailleux et Pierre Ignace Delvallet, marchands et laboureurs) chargés de porter le cahier à Arras dès le lendemain, puis une quarantaine de signatures autographes. Trois Leclercq comparaissent : Pierre Ignace (n° 31), Noël Vallentin (n° 85, signature autographe — il savait signer) et Pierre Martin (n° 126) — très probablement l'ancêtre direct Pierre Martin (1743-1816), marchand de lin à Harnes, et son frère Pierre Ignace, témoin de son mariage en 1768. Le texte du cahier de doléances lui-même ne figure pas dans ces vues : il a été remis aux députés (voir les pistes de recherche).",
+      "transcription": "[Vue 1] Aujourd'huy vingt neuf mars mil sept cent quatre vingt neuf, au village d'Harne, en l'assemblée convoquée au son de tambour, faute de cloche, en la manière accoutumée, en l'auditoire de ce siège, par devant nous Louis Dedourge (?), lieutenant dudit lieu, [sont comparus] :\n\n1. Pierre Antoine Bamourt (?, ou Baucourt — cf. signature) · 2. Jean Joseph Delattre · 3. Jacques Mélantois · 4. François Joseph Sauvage · 5. Pierre François Sauvage · 6. André Dacheville · 7. François Houssiau (?) · 8. François Marie Choquet · 9. Alexandre Caron · 10. Louis Pierre Hidon (?) · 11. Michel Ange Cordier (?) · 12. Jean Baptiste Beullez (?) · 13. Phili[bert] (?) Sauvage · 14. Jean Baptiste Bacuez [Bacquez] · 15. Louis Joseph Corroyez · 16. Jean François Vincent · 17. Olivier Bacuez · 18. Barthélemi Racarie [Racary] · 19. Louis Vincent · 20. Pierre François Baudain · 21. Pierre Martin Depris [Deprez] · 22. Nicolas Clape (?) · 23. Pierre Martin Mélantois · 24. Antoine Joseph Sénéchal · 25. Charles Louis Mélantois · 26. Hilarion Joseph Delattre · 27. Jean Martin Douchet · 28. François Joseph Corroyez · 29. Nicolas Wantier · 30. François Joseph Bacuez · 31. Pierre Ignace Leclercq (?) · 32. Denis Louis Lucas · 33. Pierre Joseph Sénéchal · 34. Pierre Martin Clape · 35. Éloi (?) Prosper Delattre · 36. Pierre Hubert Racary · 37. Jean Joseph Warlette · 38. Pierre Wacheue [Wacheux] · 39. François Wacheue · 40. Pierre Ignace Wartelle (?) · 41. Louis Joseph Lucas (?) · 42. Théodore Delambre · 43. Louis Joseph Dedourge · 44. Jean Baptiste Delvallet (?) · 45. Louis Delattre\n\n[Vue 2, page de gauche] 46. Charles François Racarie · 47. Honoré Choquet · 48. Philippe Musse (?) · 49. Jean Baptiste Houssiau · 50. Jean Antoine Vincent · 51. Pierre Joseph Juste (?) · 52. Jean Pierre Depris · 53. Roch (?) Choquet · 54. Pierre Antoine Houssiau · 55. Pierre Martin Depris · 56. Adrien (?) Delvallet · 57. Pierre François Bailleux (?) · 58. Pierre Joseph Delvalle · 59. Pierre Philippe Depris · 60. Jean Baptiste Delvallet · 61. Joseph Falvion (?) · 62. Charles François Hérissin (?) · 63. Pierre Martin Depris · 64. Charles François Caron · 65. Pierre François Delattre · 66. Jean Baptiste Bocquet · 67. Charles François Demarque · 68. Franchera (?) Demarque · 69. Pierre Martin Racari · 70. Pierre Augustin Dubus · 71. Louis Albert Delambre · 72. Jean (?) Joseph Vallentin Sénéchal · 73. Joseph Deroute (?) · 74. Jacques Deliège (?) · 75. Pierre Martin Bacuez · 76. Julien Pecqueur · 77. Louis Joseph Platieux · 78. Pierre François Delvallet · 79. Philippe Dominique Demarque · 80. François Joseph Cavatin (?) · 81. Pierre Depris · 82. Eugène Delvallet · 83. Louis Joseph Cuvellier (?) · 84. Joseph Crépieux (?) · 85. Noël Vallentin Leclercq (signature autographe, vue 4) · 86. Charles Louis Delattre · 87. Joseph Goube · 88. Pierre François Boutemy · 89. Louis Bailliet (?) · 90. Pierre Antoine Lucas · 91. François Corroyez · 92. Antoine Joseph Cailliez (?) · 93. Michel Delvallet (?) · 94. Louis Joseph Bailliet [Bailliez] · 95. Charles Joseph Wantier · 96. Philippe Dubus · 97. François Masclef · 98. Pierre François Choquet · 99. Pierre François Warlette · 100. Louis Joseph Delvallet · 101. Louis Joseph Masclef · 102. Toussaint (?) Bamourt (?) [Baucourt ?] · 103. Jean Martin (?) Demarque · 104. Louis Joseph Pollet · 105. François Antoine Bailliez (?) · 106. Pierre Philippe Dacheville · 107. Louis Joseph Bacuez · 108. Jean Baptiste Vincent · 109. Pierre François Choquet (second homonyme, ou reprise) · 110. Jean Louis Platieux · 111. Jean François Bucquet · 112. François Joseph Boutemy · 113. Thomas Joseph Depris · 114. Jean Pierre Delvallet · 115. Charles Joseph Bailliu · 116. Jean Jacques Depris · 117. Denis Joseph Laurent (futur député) · 118. Pierre François Corroyez · 119. Guillaume Cailleux (futur député) · 120. Jean Baptiste Rohart (futur député) · 121. Pierre Joseph Wantier · 122. Jean François Lucas · 123. François Robert Delambre (?) · 124. Pierre Wantier\n\n[Vue 2, page de droite] 125. François Crépieux · 126. Pierre Martin Leclercq · 127. Pierre Martin Delattre · 128. Stanislas Sévère (?) Corroyez · 129. Pierre Martin Rohart · 130. Pierre Martin Corroyez · 131. Jacques Philippe Rohart · 132. Jean Baptiste Lucas (?)\n\ntous nés, ou naturalisés, âgés de vingt cinq ans, compris dans les rôles des impositions, habitans de cette communauté composée de quatre cent feux ; lesquels, pour obéir aux ordres de sa majesté, portés par ses lettres données à Versailles le vingt quatre janvier mil sept cent quatre vingt neuf, pour la convocation et tenue des états généraux de ce roïaume, et satisfaire aux dispositions du règlement y annexé, ainsi qu'à l'ordonnance de Me Hubert Antoine Joseph Levent (?), conseiller du roi, lieutenant général du bailliage roïal d'Arras, y demeurant, dont ils nous ont déclaré avoir une parfaite connaissance, tant par la lecture qui vient de leur en être faite, que par la lecture et publication ci-devant faites au prône de la messe paroissiale par monsieur le curé le vingt cinq du présent mois, et pour la lecture, publication et affiches pareillement faites, le même jour, à l'issue de laditte\n\n[Vue 3] messe de paroisse, au devant de la porte principale de l'église ; nous ont déclarés qu'ils alloient d'abord s'occuper de la rédaction de leurs cahiers de doléances, plaintes et remontrances, et en effet, y aïant vaqué, ils nous ont représenté ledit cahier, qui a été signé par ceux desdits habitans qui savent signer, et par nous, après l'avoir côté par première et dernière pages, et paraphé ne varietur au bas d'icelles.\n\nEt de suite lesdits habitans, après avoir mûrement délibéré sur le choix des députés qu'ils sont tenus de nommer, en conformité desdites lettres du roi et règlement y annexés, et les voix aïant été recueillies en la manière accoutumée, la pluralité des suffrages s'est réunie en faveur des sieurs Jean Baptiste Rohart, Denis Joseph Laurent, Guillaume Cailleux et Pierre Ignace Delvallet, tous marchands et laboureurs demeurants audit village d'Harne, qui ont accepté ladite commission et promis de s'en acquitter fidellement.\n\nLadite nomination de députés ainsi faitte, lesdits habitans ont, en notre présence, remis auxdits sieurs Jean Baptiste Rohart, Denis Joseph Laurent, Guillaume Cailleux et Pierre Ignace Delvallet, leurs députés, le cahier, afin de le porter à l'assemblée qui se tiendra le trente du mois de mars (?) mil sept cent quatre vingt neuf devant ledit Me Levent (?) en son hôtel à Arras ou autres, et leur ont donné tous pouvoirs requis et nécessaires, à l'effet de les représenter en ladite assemblée, pour toutes les opérations prescrites par l'ordonnance susditte des vingt quatre janvier dernier et treize (?) mars dernier, comme aussi de donner pouvoirs généraux et suffisans de proposer, remontrer, aviser et consentir tout ce qui peut concerner les besoins de l'état, la réforme des abus,\n\n[Vue 4] l'établissement d'un ordre fixe et durable dans toutes les parties de l'administration, la prospérité générale du roïaume, et le bien de tous et de chacun des sujets de sa majesté.\n\nEt de leur part, lesdits députés se sont présentement chargés du cahier de doléances de laditte communauté, et ont promis de le porter à laditte assemblée, et de se conformer à tout ce qui est prescrit et ordonné par lesdittes lettres du roi, règlement y annexé et ordonnance susditte.\n\nDesquelles nominations de députés, remises de cahier, pouvoirs et déclaration, nous avons à tous les susdits comparans donné acte, et avons signé avec ceux desdits habitans qui savent signer et avec lesdits députés, notre présent procès-verbal, ainsi que le duplicata, que nous avons préalablement remis auxdits députés, pour constater leurs pouvoirs, et le présent sera déposé aux archives et secrétariat de cette communauté. Qui furent ainsi fait et arrêté ledit jour, mois et an que dessus, et ceux qui savent signer ont signé avec nous.\n\n[Signatures autographes, vues 4-5] Julien Pecqueur · J. J. (?) Platieux · Pierre François Delvallet · P. D. Demarque · P. J. (?) Cailliez (?) · Pierre Depré (grande signature ornée) · Eugène Delvalle · Louis Joseph Cuvellier (?) · Joseph Crépieux · noël vallentin le clercq · Charles Louis Delattre · Joseph Goube · P. F. Boutemy · Louis Bailliet · Pierre Antoine Lucas · François Corroyez · Antoine Joseph Cailliez (?) · Michel Delvalle (?) · Louis Joseph Bailliez · Charles J[oseph] Wantiez · P. Dubus · J. (?) Masclef · P. F. Choquet · Pierre François Warlet · Louis Joseph Delvallée · Louis J. (?) Masclef · Baucourt (?) · J. M. Demarcq · L. J. Pollet · F. A. Bailliez (?) · Pierre Philippe Dacheville · Louis Joseph Bucquet · Jean Louis Platieux · J. B. Vinchant [Vincent] · Pierre François Choquet · F. J. Boutemy · J. F. Bucquet · Thomas Joseph Depré · Jean Pierre Devalle · François Masclef · Charles Joseph Bailliu · Jean Jacques Depré · Denis Joseph Laurent · Pierre François Corroyez · Guillaume Caillieux · J. B. Rohart · P. J. Wantiez · F. R. Delambre (?) · Lucas · Pierre Ignace Delvalle · Dedourge (paraphe du lieutenant).",
+      "transcriptionNote": "Transcription de travail : graphies d'époque conservées (« roïaume », « laditte », « habitans »…), accents et ponctuation légèrement normalisés ; lectures incertaines notées (?), restitutions [entre crochets]. La numérotation des 132 comparants est éditoriale (elle n'existe pas dans l'original). Les formules juridiques suivent le modèle du règlement royal du 24 janvier 1789 (transcription sûre) ; la liste des comparants et les signatures sont les passages les plus délicats — environ un quart des noms restent sous réserve. Les trois mentions Leclercq (n° 31, 85, 126) ont été revérifiées sur les scans.",
+      "shortLabel": "Assemblée d'Harnes 1789",
+      "file": "sources/pv-harnes-1789-vue1.jpg",
+      "annexes": [
+        {
+          "file": "sources/pv-harnes-1789-vue2.jpg",
+          "caption": "Vue 2 — suite des comparants (n° 46-132), dont Noël Vallentin (n° 85) et Pierre Martin Leclercq (n° 126, en tête de la page de droite)"
+        },
+        {
+          "file": "sources/pv-harnes-1789-vue3.jpg",
+          "caption": "Vue 3 — rédaction du cahier de doléances, élection des quatre députés, remise du cahier et pouvoirs"
+        },
+        {
+          "file": "sources/pv-harnes-1789-vue4.jpg",
+          "caption": "Vue 4 — clôture et signatures autographes, dont « noël vallentin le clercq »"
+        },
+        {
+          "file": "sources/pv-harnes-1789-vue5.jpg",
+          "caption": "Vue 5 — suite des signatures et paraphe du lieutenant Dedourge"
+        }
+      ]
+    },
+    {
       "id": "s_arbre_filae",
       "type": "compiled-tree",
       "title": "Arbre d'ascendance de Vincent Leclercq (Filae)",
@@ -6042,6 +6118,37 @@
     }
   ],
   "researchQuestions": [
+    {
+      "id": "q_noel_vallentin_leclercq_1789",
+      "question": "Rattacher Noël Vallentin Leclercq, signataire du procès-verbal d'Harnes de 1789, à la famille.",
+      "priority": "medium",
+      "status": "open",
+      "rationale": "Sa signature autographe « noël vallentin le clercq » (rare pour un villageois de 1789) est la plus lisible des trois mentions Leclercq du procès-verbal. Son prénom fait écho à Noël (Félix) et aux Valentin de la famille : probable cousin issu de Valentin (1701-1768) ou de la descendance de Jean Philippe (1691-1759), dont deux fils se prénomment Valentin (1719) et Louis Valentin (1726).",
+      "leads": [
+        "BMS d'Harnes 1740-1789 (AD Pas-de-Calais, en ligne) : baptême d'un Noël Valentin Leclercq",
+        "Descendances de Valentin (1701) et des fils de Jean Philippe (Valentin 1719, Louis Valentin 1726)"
+      ],
+      "relatedPeople": [
+        "p_valentin1701_leclercq",
+        "p_jeanphilippe_leclercq",
+        "p_pm1743_leclercq"
+      ]
+    },
+    {
+      "id": "q_cahier_doleances_harnes",
+      "question": "Retrouver le texte même du cahier de doléances d'Harnes, remis aux députés le 29 mars 1789.",
+      "priority": "medium",
+      "status": "open",
+      "rationale": "Le procès-verbal 2 B 883/6 n'est que l'acte d'accompagnement : le cahier signé par les habitants (dont sans doute les Leclercq) a été porté à Arras. Les cahiers de la gouvernance d'Arras sont conservés aux AD du Pas-de-Calais (cotes 2 B 881-884) et presque tous publiés par Henri Loriquet, « Cahiers de doléances de 1789 dans le département du Pas-de-Calais » (Arras, 1891, 2 tomes ; t. 2 librement consultable sur Internet Archive).",
+      "leads": [
+        "AD Pas-de-Calais, carton 2 B 883 (pièce voisine du procès-verbal)",
+        "Loriquet 1891, t. 2 : https://archive.org/details/cahiersdedolan02loriuoft (chercher « Harnes »)"
+      ],
+      "relatedPeople": [
+        "p_pm1743_leclercq",
+        "p_pierreignace_leclercq"
+      ]
+    },
     {
       "id": "q_dzulak_kucyk_pilerski",
       "question": "Confirmer les grands-parents polonais nommés par André : Kucyk Siméon × Catharina Džulak, et Pilerski/Walno.",
