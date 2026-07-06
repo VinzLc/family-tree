@@ -2165,6 +2165,46 @@
       }
     },
     {
+      "id": "p_louisvalentin1726_leclercq",
+      "names": {
+        "given": "Louis Valentin",
+        "surname": "Leclercq",
+        "variants": []
+      },
+      "sex": "M",
+      "living": false,
+      "relationToReference": "cousin germain de Pierre Martin (1743) — fils de Jean Philippe",
+      "treeCousin": {
+        "besideUnion": "u_pm1743_devillers",
+        "label": "cousin germain",
+        "linkTo": "p_jeanphilippe_leclercq"
+      },
+      "events": [
+        {
+          "type": "birth",
+          "date": "1726-09-03",
+          "place": "Harnes (Pas-de-Calais)",
+          "confidence": "probable",
+          "sources": ["s_arbre_filae"],
+          "note": "Date de son baptême à Harnes (relevé Filae)."
+        },
+        {
+          "type": "civic",
+          "date": "1791",
+          "place": "Harnes (Pas-de-Calais)",
+          "value": "Maire d'Harnes de 1791 à 1798 — le deuxième maire de la commune",
+          "confidence": "probable",
+          "sources": ["s_maires_harnes"],
+          "note": "Succède à Jean-Baptiste Rohart, l'un des quatre députés du cahier de doléances de 1789, et précède Louis-Joseph Masclef, signataire du cahier. Identification probable : le prénom composé correspond exactement au fils de Jean Philippe baptisé en 1726 (il aurait 65 à 72 ans en mandat), mais l'annuaire des maires ne cite pas ses sources — homonymie possible, à confirmer par les registres municipaux révolutionnaires."
+        }
+      ],
+      "display": {
+        "confidence": "probable",
+        "tag": "⚜ maire d'Harnes 1791-1798"
+      },
+      "notes": "Fils de Jean Philippe Leclercq (1691-1759), laboureur censier, et de Marie Élisabeth Carpentier — cousin germain de l'ancêtre direct Pierre Martin (1743). Affiché dans l'arbre par exception (les descendances collatérales n'y figurent normalement pas) : il est très probablement le « Louis-Valentin Leclercq » deuxième maire d'Harnes, de 1791 à 1798, pendant la Terreur et le Directoire. Le trait de l'arbre le relie à la carte de son père Jean Philippe. Sa branche — lettrée et notable — est aussi la piste la plus sérieuse pour rattacher Noël Vallentin Leclercq, signataire du cahier de 1789."
+    },
+    {
       "id": "p_antoineignace_leclercq",
       "names": { "given": "Antoine Ignace", "surname": "Leclercq", "variants": [] },
       "sex": "M",

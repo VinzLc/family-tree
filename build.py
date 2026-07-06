@@ -585,7 +585,13 @@ TREE_JS = r'''<script>
   var links=(window.FATREE&&FATREE.links)||[];
   var pN=svg.querySelector("path:not([class])"),
       p0=svg.querySelector(".branch-s0"), p1=svg.querySelector(".branch-s1");
-  function anchor(uid){ return tree.querySelector('.union-core[data-uid="'+uid+'"]'); }
+  function anchor(uid){
+    // cible normale : un couple (union-core) ; exception treeCousin : la carte
+    // d'une personne (parent collatéral), identifiée par son préfixe p_
+    return uid.indexOf("p_")===0
+      ? tree.querySelector('.person[data-pid="'+uid+'"]')
+      : tree.querySelector('.union-core[data-uid="'+uid+'"]');
+  }
   function draw(){
     var base=tree.getBoundingClientRect(), W=tree.scrollWidth, H=tree.scrollHeight;
     svg.setAttribute("width",W); svg.setAttribute("height",H);
@@ -601,7 +607,7 @@ TREE_JS = r'''<script>
       if(!childEl||!parEl) return;
       var cr=childEl.getBoundingClientRect(), pr=parEl.getBoundingClientRect();
       if(!cr.width||!pr.width) return;                  // masqué (allié replié)
-      if(!groups[l[1]]){ groups[l[1]]={pr:pr,cls:l[2],items:[]}; order.push(l[1]); }
+      if(!groups[l[1]]){ groups[l[1]]={pr:pr,cls:l[2],items:[],person:l[1].indexOf("p_")===0}; order.push(l[1]); }
       groups[l[1]].items.push({el:childEl,r:cr});
     });
     order.forEach(function(uid){
@@ -634,7 +640,16 @@ TREE_JS = r'''<script>
           var y=Math.round(r.top-base.top+r.height/2), ex=Math.round((left?r.left:r.right)-base.left);
           seg+="M"+ex+" "+y+"H"+spineX; lowY=Math.max(lowY,y);
         });
-        seg+="M"+spineX+" "+lowY+"V"+midY+"H"+px+"V"+pyBot;
+        if(g.person){
+          // cible = carte d'une personne (treeCousin) : on reste dans le couloir
+          // latéral et on entre par le CÔTÉ de la carte, jamais par en dessous
+          // (le bas est masqué par la pile de frères/sœurs)
+          var py=Math.round(g.pr.top-base.top+g.pr.height/2);
+          var side=spineX<Math.round(g.pr.left-base.left)?g.pr.left:g.pr.right;
+          seg+="M"+spineX+" "+lowY+"V"+py+"H"+Math.round(side-base.left);
+        } else {
+          seg+="M"+spineX+" "+lowY+"V"+midY+"H"+px+"V"+pyBot;
+        }
         add(g.cls,seg);
       });
     });
@@ -843,10 +858,12 @@ class Tree:
         return [c for c in self.unions[pu].get("children", [])
                 if c != pid and c not in self.partner_ids and c in self.people]
 
-    def sib_group_html(self, sibs, side):
+    def sib_group_html(self, sibs, side, label=None):
         n_m = sum(1 for c in sibs if self.people[c].get("sex") == "M")
         n_f = len(sibs) - n_m
-        if n_m and n_f:
+        if label:
+            lbl = esc(label)
+        elif n_m and n_f:
             lbl = "frères &amp; sœurs"
         elif n_f:
             lbl = "sœur" if n_f == 1 else "sœurs"
@@ -865,6 +882,13 @@ class Tree:
         partners = u["partners"]
         stack_cls = "stack ext" if u.get("tier") == "extended" else "stack"
         out = ['<div class="%s"><div class="union-row">' % stack_cls]
+        # cousins « épinglés » par exception (treeCousin.besideUnion) → tout à gauche,
+        # reliés par JS à la carte de leur parent collatéral (linkTo), pas à une union
+        cousins = [p["id"] for p in self.data["people"]
+                   if (p.get("treeCousin") or {}).get("besideUnion") == uid]
+        if cousins:
+            lbl = (self.people[cousins[0]].get("treeCousin") or {}).get("label", "cousin")
+            out.append(self.sib_group_html(cousins, "left", label=lbl))
         # frères/sœurs du 1ᵉʳ partenaire → à sa gauche (côté extérieur)
         left_sibs = self.collateral_sibs_for(partners[0])
         if left_sibs:
@@ -915,6 +939,8 @@ class Tree:
         blob = (disp.get("role", "") or "") + " " + (p.get("notes", "") or "")
         if "Mort pour la France" in blob:
             line += '<span class="sib-tag">✝ Mort pour la France</span>'
+        if disp.get("tag"):
+            line += '<span class="sib-tag">%s</span>' % esc(disp["tag"])
         if line:
             out.append('<div class="meta">%s</div>' % line)
         out.append('</div>')
@@ -1033,6 +1059,15 @@ class Tree:
             pu = (self.people.get(pid, {}).get("parents") or {}).get("unionId")
             if pu and pu in rendered:
                 links.append([pid, pu, branch_of.get(pu, "")])
+        # cousins épinglés (treeCousin) : lien personne -> personne (carte du parent
+        # collatéral), coloré comme la lignée dont ce parent descend
+        for p in self.data["people"]:
+            tc = p.get("treeCousin") or {}
+            target = tc.get("linkTo")
+            if not target or tc.get("besideUnion") not in rendered:
+                continue
+            tpu = (self.people.get(target, {}).get("parents") or {}).get("unionId")
+            links.append([p["id"], target, branch_of.get(tpu, "")])
         out.append('<script>var FATREE=%s;</script>'
                    % json.dumps({"links": links}, ensure_ascii=False))
         return "\n".join(out)
