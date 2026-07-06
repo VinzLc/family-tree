@@ -618,7 +618,12 @@ TREE_JS = r'''<script>
       var px=Math.round(g.pr.left-base.left+g.pr.width/2), pyBot=Math.round(g.pr.bottom-base.top);
       var minTop=Infinity;
       g.items.forEach(function(it){ minTop=Math.min(minTop,it.r.top-base.top); });
-      var midY=Math.round((minTop+pyBot)/2);
+      // Palier juste AU-DESSUS des cartes enfants (et jamais au-dessus du couple
+      // parent) : un palier à mi-hauteur peut traverser la pile de frères/sœurs
+      // de la génération du dessus quand elle descend bas (ex. les 9 enfants de
+      // Noël Félix vs le couple Pierre Martin × Devillers) — les segments
+      // ressortaient sous les cartes et semblaient relier des homonymes.
+      var midY=Math.round(Math.max(pyBot+10, minTop-22));
       var stacks=[];                                    // une épine par .sib-group
       g.items.forEach(function(it){
         if(!it.el.classList.contains("sib")){
