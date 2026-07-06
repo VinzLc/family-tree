@@ -107,6 +107,12 @@ automatique dès que le champ existe ; aucune autre action). Conventions :
   succession), lister les champs ligne par ligne (`• Nom · prénom · année · …`) ;
 - mettre les nuances éditoriales dans `transcriptionNote` (âge illisible, ligne
   masquée, coïncidence à confirmer…). Ne **jamais inventer** un passage non lu.
+- **Double version (optionnelle)** : `transcriptionOriginal` = texte aux
+  graphies d'époque telles que lues ; `transcription` reste la version
+  **modernisée** (celle affichée par défaut). Quand les deux existent, la
+  lightbox montre deux onglets « Modernisé / Texte d'époque ». Réserver le
+  doublon aux pièces d'Ancien Régime où la graphie diffère vraiment ; noms
+  propres et listes de noms identiques dans les deux versions.
 
 **Événement** ajouté à une personne — `confidence` pilote le style de carte
 (`documented`/`probable`/`family`/`unknown`). Types utiles : `birth`, `death`,

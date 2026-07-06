@@ -355,6 +355,9 @@ HEAD = r'''<!DOCTYPE html>
   .lb-trans h3{font-family:"Courier Prime",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ochre);margin:0 0 4px;}
   .lb-trans .lb-trans-doc{font-family:"Cormorant Garamond",serif;font-size:17px;color:var(--oxblood);margin:0 0 12px;border-bottom:1px solid var(--hair);padding-bottom:9px;}
   .lb-trans-body{white-space:pre-wrap;font-family:"EB Garamond",Georgia,serif;font-size:14px;line-height:1.62;color:var(--ink);}
+  .lb-trans-tabs{display:flex;gap:7px;margin:0 0 12px;}
+  .lb-trans-tabs button{font-family:"Courier Prime",monospace;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;padding:3px 11px;border:1px solid var(--hair);background:transparent;color:var(--ink-soft);border-radius:11px;cursor:pointer;}
+  .lb-trans-tabs button.active{border-color:var(--gall);color:var(--gall);background:rgba(51,83,107,.08);}
   .lb-trans-note{margin:13px 0 0;padding-top:10px;border-top:1px dotted var(--hair);font-size:11px;font-style:italic;line-height:1.5;color:var(--ochre);}
   .doc-transflag{margin-left:7px;font-family:"Courier Prime",monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--gall);white-space:nowrap;}
   .doc-concerns{display:block;font-size:12.5px;font-style:italic;color:var(--ink-soft);margin-top:3px;line-height:1.45;}
@@ -1294,6 +1297,7 @@ class Tree:
             for a in annexes:
                 imgs.append({"u": quote(a["file"]), "c": a.get("caption", "")})
             docs[quote(f)] = {"t": s.get("transcription", ""), "d": s.get("title", ""),
+                              "o": s.get("transcriptionOriginal", ""),
                               "n": s.get("transcriptionNote", ""), "imgs": imgs}
         return (
             '<div class="lb-backdrop" id="lb" aria-hidden="true">\n'
@@ -1306,6 +1310,9 @@ class Tree:
             '<aside class="lb-trans" id="lbTrans" hidden>'
             '<h3>Transcription</h3>'
             '<p class="lb-trans-doc" id="lbTransDoc"></p>'
+            '<div class="lb-trans-tabs" id="lbTransTabs" hidden>'
+            '<button type="button" id="lbTabMod" class="active">Modernisé</button>'
+            '<button type="button" id="lbTabOrig">Texte d\'époque</button></div>'
             '<div class="lb-trans-body" id="lbTransBody"></div>'
             '<p class="lb-trans-note" id="lbTransNote"></p></aside>\n'
             '</div>\n'
@@ -1318,7 +1325,16 @@ class Tree:
             '      thumbs=document.getElementById("lbThumbs"),\n'
             '      stage=document.getElementById("lbStage"),tr=document.getElementById("lbTrans"),\n'
             '      trDoc=document.getElementById("lbTransDoc"),trBody=document.getElementById("lbTransBody"),\n'
-            '      trNote=document.getElementById("lbTransNote");\n'
+            '      trNote=document.getElementById("lbTransNote"),\n'
+            '      trTabs=document.getElementById("lbTransTabs"),\n'
+            '      tabMod=document.getElementById("lbTabMod"),tabOrig=document.getElementById("lbTabOrig"),\n'
+            '      curDoc=null;\n'
+            '  function setTrans(orig){ if(!curDoc) return;\n'
+            '    trBody.textContent=orig?curDoc.o:curDoc.t;\n'
+            '    tabMod.classList.toggle("active",!orig); tabOrig.classList.toggle("active",!!orig);\n'
+            '    tr.scrollTop=0; }\n'
+            '  tabMod.addEventListener("click",function(){setTrans(false);});\n'
+            '  tabOrig.addEventListener("click",function(){setTrans(true);});\n'
             '  function setImg(u,c){ img.src=u; img.alt=c||""; cap.innerHTML=c||""; dl.href=u; dl.setAttribute("download",""); }\n'
             '  function show(src,alt,c){\n'
             '    var d=FADOCS[src]||FADOCS[decodeURIComponent(src)];\n'
@@ -1333,7 +1349,9 @@ class Tree:
             '      thumbs.hidden=false;\n'
             '    } else { thumbs.hidden=true; }\n'
             '    if(imgs&&imgs.length){ setImg(imgs[0].u, imgs[0].c); } else { setImg(src, c); }\n'
-            '    if(d&&d.t){ trDoc.textContent=d.d||""; trBody.textContent=d.t||"";\n'
+            '    if(d&&d.t){ trDoc.textContent=d.d||""; curDoc=d;\n'
+            '      if(d.o){ trTabs.hidden=false; setTrans(false); }\n'
+            '      else { trTabs.hidden=true; trBody.textContent=d.t||""; }\n'
             '      trNote.textContent=d.n||""; trNote.style.display=d.n?"":"none";\n'
             '      tr.hidden=false; stage.classList.add("has-trans"); tr.scrollTop=0; }\n'
             '    else { tr.hidden=true; stage.classList.remove("has-trans"); }\n'
