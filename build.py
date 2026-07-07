@@ -230,8 +230,14 @@ HEAD = r'''<!DOCTYPE html>
   .nh-tag.joined{color:var(--oxblood);}
   .nh-doc{font-size:13px;color:var(--ink-soft);}
   .nh-sig{flex:1 1 300px;min-width:260px;margin:6px 0 0;text-align:center;}
+  .nh-figs{flex:1 1 320px;min-width:260px;display:flex;flex-direction:column;gap:20px;}
+  .nh-figs .nh-sig{flex:none;min-width:0;}
   .nh-sig img{max-width:100%;border:1px solid var(--hair);border-radius:2px;box-shadow:2px 3px 9px rgba(44,39,32,.2);cursor:zoom-in;}
   .nh-sig figcaption{font-size:12.5px;font-style:italic;color:var(--ink-soft);margin-top:8px;line-height:1.45;}
+  /* Encarts historiques (historyCards) : même famille visuelle que la graphie, accent ocre */
+  .panel.hist{border-top-color:var(--ochre);}
+  .hn-tx{font-size:14px;color:var(--ink);line-height:1.5;}
+  .hn-tx.strong{color:var(--oxblood);font-weight:600;}
   .panel li .doc-name{font-style:italic;color:var(--ink-soft);}
   .panel li a.doc-name{text-decoration:none;cursor:pointer;}
   .panel li a.doc-name:hover{color:var(--oxblood);text-decoration:underline;}
@@ -1260,6 +1266,42 @@ class Tree:
                 '%s\n</div>'
                 % (esc(sh["title"]), esc(sh.get("intro", "")), "".join(rows), fig, paras))
 
+    def history_cards(self):
+        """Encarts historiques (`historyCards`) : récits contextuels — frise de
+        dates + paragraphes + éventuelle figure (détail dans img/ ouvrant le
+        scan complet en lightbox). Même ossature visuelle que surname_panel."""
+        out = []
+        for c in self.data.get("historyCards", []):
+            rows = []
+            for r in c.get("timeline", []):
+                cls = "hn-tx strong" if r.get("strong") else "hn-tx"
+                rows.append(
+                    '<tr><td class="nh-yr">%s</td><td class="%s">%s</td></tr>'
+                    % (esc(r["date"]), cls, esc(r["text"])))
+            figs = c.get("figures") or ([c["figure"]] if c.get("figure") else [])
+            parts = []
+            for f in figs:
+                full = f.get("full", f["file"])
+                href = full if full.startswith("http") else quote(full)
+                parts.append('<figure class="nh-sig">'
+                             '<a class="doc-img" href="%s" data-cap="%s">'
+                             '<img src="%s" alt="%s"></a>'
+                             '<figcaption>%s</figcaption></figure>'
+                             % (esc(href), esc(f.get("caption", "")), esc(quote(f["file"])),
+                                esc(f.get("alt", "")), esc(f.get("caption", ""))))
+            # plusieurs figures -> colonne unique à côté de la frise
+            fig = ('<div class="nh-figs">%s</div>' % "".join(parts)
+                   if len(parts) > 1 else "".join(parts))
+            paras = "\n".join('<p class="nh-p">%s</p>' % esc(p)
+                              for p in c.get("paragraphs", []))
+            out.append(
+                '<div class="panel hist">\n<h2>%s</h2>\n'
+                '<p class="nh-intro">%s</p>\n'
+                '<div class="nh-flex">\n<table class="nh-table">%s</table>\n%s\n</div>\n'
+                '%s\n</div>'
+                % (esc(c["title"]), esc(c.get("intro", "")), "".join(rows), fig, paras))
+        return "\n".join(out)
+
     def research_panel(self):
         qs = sorted(self.data.get("researchQuestions", []),
                     key=lambda q: PRIORITY.get(q.get("priority"), 9))
@@ -1709,6 +1751,9 @@ class Tree:
         sp = self.surname_panel()
         if sp:
             body.append('<div style="margin-top:52px;">%s</div>' % sp)
+        hc = self.history_cards()
+        if hc:
+            body.append('<div style="margin-top:52px;">%s</div>' % hc)
         body.append('<div style="margin-top:52px;">%s</div>' % self.sources_panel())
         body.append("""
   <footer>
